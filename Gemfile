@@ -8,10 +8,10 @@ end
 # Developer added gems
 gem 'stripe'
 gem "shrine", "~> 2.0"
-gem "pundit"
+gem "pundit" #installed
 gem 'geocoder'
 gem 'mailgun_rails'
-gem 'devise', '~> 4.4', '>= 4.4.3'
+gem 'devise', '~> 4.4', '>= 4.4.3' #installed
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
@@ -41,7 +41,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
+  gem 'dotenv-rails'
+  gem 'rspec-rails', '~> 3.4', '>= 3.4.2' #installed
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
