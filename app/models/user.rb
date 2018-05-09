@@ -6,7 +6,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :profile
-
+  has_many :trips
+  
   def create_profile
     Profile.create!([
       {

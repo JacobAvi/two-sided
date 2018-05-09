@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Distance travelled:</strong>
+  <%= @trip.distance_travelled %>
+</p>
+
+<p>
+  <strong>Start address:</strong>
+  <%= @trip.start_address %>
+</p>
+
+<p>
+  <strong>Finish address:</strong>
+  <%= @trip.finish_address %>
+</p>
+
+<p>
+  <strong>Start lat:</strong>
+  <%= @trip.start_lat %>
+</p>
+
+<p>
+  <strong>Start long:</strong>
+  <%= @trip.start_long %>
+</p>
+
+<p>
+  <strong>Finish lat:</strong>
+  <%= @trip.finish_lat %>
+</p>
+
+<p>
+  <strong>Finish long:</strong>
+  <%= @trip.finish_long %>
+</p>
+
+<p>
+  <strong>Fare:</strong>
+  <%= @trip.fare %>
+</p>
+
+<p>
+  <strong>Avail seats:</strong>
+  <%= @trip.avail_seats %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @trip.driver %>
+</p>
+
+<%= link_to 'Edit', edit_trip_path(@trip) %> |
+<%= link_to 'Back', trips_path %>

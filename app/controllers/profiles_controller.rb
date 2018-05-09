@@ -18,7 +18,7 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = Profile.new(profile_params)
-
+    @profile.user = current_user
     if @profile.save
       redirect_to @profile, notice: 'profile was successfully created.'
     else
@@ -39,6 +39,12 @@ class ProfilesController < ApplicationController
     redirect_to profiles_url, notice: 'profile was successfully destroyed.'
   end
 
+  def contact_email
+    full_name = "#{profile_params[:first_name]} #{profile_params[:last_name]}"
+    user_info = {user: current_user, full_name: full_name, email: current_user.email}
+    ContactMailer.send_contact_email(user_info).deliver_now
+  end
+
   private
 
   def set_profile
@@ -48,4 +54,5 @@ class ProfilesController < ApplicationController
   def profile_params
     params.require(:profile).permit(:first_name, :last_name, :contact_no, :image, :car_type, :remove_image)
   end
+
 end

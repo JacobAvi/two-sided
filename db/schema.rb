@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180509003924) do
+ActiveRecord::Schema.define(version: 20180510053202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 20180509003924) do
 
   create_table "trips", force: :cascade do |t|
     t.decimal "distance_travelled"
-    t.text "start_address"
-    t.text "finish_address"
+    t.string "start_address"
+    t.string "finish_address"
     t.float "start_lat"
     t.float "start_long"
     t.float "finish_lat"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20180509003924) do
     t.bigint "passenger_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "start_date"
     t.index ["driver_id"], name: "index_trips_on_driver_id"
     t.index ["passenger_id"], name: "index_trips_on_passenger_id"
   end
@@ -80,6 +81,4 @@ ActiveRecord::Schema.define(version: 20180509003924) do
   add_foreign_key "profiles", "users"
   add_foreign_key "trip_requests", "trips"
   add_foreign_key "trip_requests", "users", column: "passenger_id"
-  add_foreign_key "trips", "users", column: "driver_id"
-  add_foreign_key "trips", "users", column: "passenger_id"
 end
