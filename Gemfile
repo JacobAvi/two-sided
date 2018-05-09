@@ -7,11 +7,15 @@ end
 
 # Developer added gems
 gem 'stripe'
-gem "shrine", "~> 2.0"
 gem "pundit" #installed
 gem 'geocoder'
 gem 'mailgun_rails'
 gem 'devise', '~> 4.4', '>= 4.4.3' #installed
+
+gem "shrine", "~> 2.0"
+gem 'fastimage'
+gem 'image_processing'
+gem 'mini_magick'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'

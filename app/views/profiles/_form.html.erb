@@ -26,10 +26,19 @@
     <%= form.text_field :contact_no, id: :profile_contact_no %>
   </div>
 
-  <div class="field">
-    <%= form.label :image_data %>
-    <%= form.text_area :image_data, id: :profile_image_data %>
+   <div class="field">
+    <%= form.label :image %><br>
+    <%= form.file_field :image %>
   </div>
+
+  <% if @profile.image_data %>
+    <div class="field">
+      <%= image_tag @profile.image_url(:thumb) %>
+    </div>
+    <div class="field">
+      Remove attachment: <%= f.check_box :remove_image %>
+    </div>
+  <% end %>
 
   <div class="field">
     <%= form.label :car_type %>

@@ -21,7 +21,9 @@
         <td><%= profile.first_name %></td>
         <td><%= profile.last_name %></td>
         <td><%= profile.contact_no %></td>
-        <td><%= profile.image_data %></td>
+        <% unless profile.image == nil %>
+        <td><%= image_tag profile.image_url(:thumb) %></td>
+        <% end %>
         <td><%= profile.car_type %></td>
         <td><%= profile.user %></td>
         <td><%= link_to 'Show', profile %></td>

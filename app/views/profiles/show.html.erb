@@ -16,8 +16,10 @@
 </p>
 
 <p>
-  <strong>Image data:</strong>
-  <%= @profile.image_data %>
+  <strong>Image:</strong>
+  <% unless @profile.image == nil %>
+  <%= image_tag @profile.image_url(:original) %>
+  <% end %>
 </p>
 
 <p>
