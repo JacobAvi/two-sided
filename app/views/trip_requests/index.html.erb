@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Trip Requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pickup address</th>
+      <th>Dropoff address</th>
+      <th>User Id</th>
+      <th>Trip Id</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @trip_requests.each do |trip_request| %>
+      <tr>
+        <td><%= trip_request.pickup_address %></td>
+        <td><%= trip_request.dropoff_address %></td>
+        <td><%= trip_request.user_id %></td>
+        <td><%= trip_request.trip_id %></td>
+        <td><%= link_to 'Show', trip_request %></td>
+        <td><%= link_to 'Edit', edit_trip_request_path(trip_request) %></td>
+        <td><%= link_to 'Destroy', trip_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Trip Request', new_trip_request_path %>

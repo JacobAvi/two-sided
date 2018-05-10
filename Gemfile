@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 # Developer added gems
-gem 'stripe'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem "pundit" #installed
 gem 'geocoder'
 gem 'mailgun_rails'
