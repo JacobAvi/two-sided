@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180510053203) do
+ActiveRecord::Schema.define(version: 20180510082859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.text "address"
+    t.float "latitude"
+    t.float "longitude"
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.string "first_name"
@@ -28,28 +34,19 @@ ActiveRecord::Schema.define(version: 20180510053203) do
   end
 
   create_table "trip_requests", force: :cascade do |t|
-    t.text "pickup_address"
-    t.text "dropoff_address"
-    t.float "pickup_long"
-    t.float "pickup_lat"
-    t.float "dropoff_long"
-    t.float "dropoff_lat"
     t.bigint "user_id"
     t.bigint "trip_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "pickup_address_id"
+    t.bigint "dropoff_address_id"
+    t.index ["dropoff_address_id"], name: "index_trip_requests_on_dropoff_address_id"
+    t.index ["pickup_address_id"], name: "index_trip_requests_on_pickup_address_id"
     t.index ["trip_id"], name: "index_trip_requests_on_trip_id"
     t.index ["user_id"], name: "index_trip_requests_on_user_id"
   end
 
   create_table "trips", force: :cascade do |t|
-    t.decimal "distance_travelled"
-    t.string "start_address"
-    t.string "finish_address"
-    t.float "start_lat"
-    t.float "start_long"
-    t.float "finish_lat"
-    t.float "finish_long"
     t.decimal "fare"
     t.integer "avail_seats"
     t.bigint "driver_id"
@@ -57,8 +54,12 @@ ActiveRecord::Schema.define(version: 20180510053203) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "start_date"
+    t.bigint "start_address_id"
+    t.bigint "finish_address_id"
     t.index ["driver_id"], name: "index_trips_on_driver_id"
+    t.index ["finish_address_id"], name: "index_trips_on_finish_address_id"
     t.index ["passenger_id"], name: "index_trips_on_passenger_id"
+    t.index ["start_address_id"], name: "index_trips_on_start_address_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -79,6 +80,10 @@ ActiveRecord::Schema.define(version: 20180510053203) do
   end
 
   add_foreign_key "profiles", "users"
+  add_foreign_key "trip_requests", "addresses", column: "dropoff_address_id"
+  add_foreign_key "trip_requests", "addresses", column: "pickup_address_id"
   add_foreign_key "trip_requests", "trips"
   add_foreign_key "trip_requests", "users"
+  add_foreign_key "trips", "addresses", column: "finish_address_id"
+  add_foreign_key "trips", "addresses", column: "start_address_id"
 end

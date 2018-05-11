@@ -22,14 +22,8 @@
   <tbody>
     <% @trips.each do |trip| %>
       <tr>
-        <td><%= trip.distance_travelled %></td>
-        <td><%= trip.start_address %></td>
-        <td><%= trip.finish_address %></td>
-        <td><%= trip.start_lat %></td>
-        <td><%= trip.start_long %></td>
-        <td><%= trip.finish_lat %></td>
-        <td><%= trip.finish_long %></td>
-        <td><%= trip.fare %></td>
+        <td><%= trip.start_address_id %></td>
+        <td><%= trip.finish_address_id %></td>
         <td><%= trip.avail_seats %></td>
         <td><%# trip.driver %></td>
         <td><%= link_to 'Show', trip %></td>

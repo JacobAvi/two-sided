@@ -12,37 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= form.hidden_field :distance_travelled, id: :trip_distance_travelled %>
-  </div>
-
-  <div class="field">
     <%= form.label :start_address %>
-    <%= form.text_field :start_address, id: :trip_start_address %>
+    <%= form.text_field :start_address, id: :start_address_id %>
   </div>
 
   <div class="field">
     <%= form.label :finish_address %>
-    <%= form.text_field :finish_address, id: :trip_finish_address %>
-  </div>
-
-  <div class="field">
-    <%= form.hidden_field :start_lat, id: :trip_start_lat %>
-  </div>
-
-  <div class="field">
-    <%= form.hidden_field :start_long, id: :trip_start_long %>
-  </div>
-
-  <div class="field">
-    <%= form.hidden_field :finish_lat, id: :trip_finish_lat %>
-  </div>
-
-  <div class="field">
-    <%= form.hidden_field :finish_long, id: :trip_finish_long %>
-  </div>
-
-  <div class="field">
-    <%= form.hidden_field :fare, id: :trip_fare %>
+    <%= form.text_field :finish_address, id: :address_id %>
   </div>
 
   <div class="field">

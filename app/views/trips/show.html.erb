@@ -1,38 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Distance travelled:</strong>
-  <%= @trip.distance_travelled %>
-</p>
-
-<p>
   <strong>Start address:</strong>
-  <%= @trip.start_address %>
+  <%= @trip.start_address_id %>
+  <p><strong>Coordinates:</strong> <%# @trip.start_lat %> <%# @trip.start_long %></p>
 </p>
 
 <p>
   <strong>Finish address:</strong>
-  <%= @trip.finish_address %>
-</p>
-
-<p>
-  <strong>Start lat:</strong>
-  <%= @trip.start_lat %>
-</p>
-
-<p>
-  <strong>Start long:</strong>
-  <%= @trip.start_long %>
-</p>
-
-<p>
-  <strong>Finish lat:</strong>
-  <%= @trip.finish_lat %>
-</p>
-
-<p>
-  <strong>Finish long:</strong>
-  <%= @trip.finish_long %>
+  <% @trip.finish_address_id %>
+    <p><strong>Coordinates:</strong> <%# @trip.finish_lat %> <%# @trip.finish_long %></p>
 </p>
 
 <p>

@@ -1,6 +1,8 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:show, :edit, :update, :destroy, :create]
+
+
   # GET /trips
   # GET /trips.json
   def index
@@ -24,8 +26,19 @@ class TripsController < ApplicationController
   # POST /trips
   # POST /trips.json
   def create
-    @trip = Trip.new(trip_params)
+    @trip = Trip.new
+    start_address = Address.new(params[:start_address_id])
+    finish_address = Address.new(params[:finish_address_id])
+    
     @trip.driver = current_user
+    @trip.start_address_id = start_address
+    @trip.finish_address_id = finish_address
+    @trip.avail_seats = params[:avail_seats]
+    
+    # start_address.trip = @trip.id
+    # finish_address.trip = @trip.id
+    start_address.save
+    finish_address
 
     respond_to do |format|
       if @trip.save
@@ -70,6 +83,6 @@ class TripsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trip_params
-      params.require(:trip).permit(:distance_travelled, :start_address, :finish_address, :start_lat, :start_long, :finish_lat, :finish_long, :fare, :avail_seats, :user_id, :trip_id)
+      params.require(:trip).permit(:start_address_id, :finish_address_id, :fare, :avail_seats, :user_id, :trip_id)
     end
 end
